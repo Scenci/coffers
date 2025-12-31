@@ -25,8 +25,8 @@ function App() {
               onClick={() => setActiveTab('input')}
               className={`px-6 py-3 font-medium transition-colors ${
                 activeTab === 'input'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'border-b-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 cyberpunk-tab-active'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400'
               }`}
             >
               Input Data
@@ -35,8 +35,8 @@ function App() {
               onClick={() => setActiveTab('visualize')}
               className={`px-6 py-3 font-medium transition-colors ${
                 activeTab === 'visualize'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'border-b-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 cyberpunk-tab-active'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400'
               }`}
             >
               Visualizations
@@ -45,8 +45,8 @@ function App() {
               onClick={() => setActiveTab('projections')}
               className={`px-6 py-3 font-medium transition-colors ${
                 activeTab === 'projections'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'border-b-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 cyberpunk-tab-active'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400'
               }`}
             >
               Projections
@@ -73,8 +73,15 @@ function App() {
           {activeTab === 'visualize' && (
             <div className="space-y-6">
               <SummaryDashboard />
-              <IncomeSankey />
-              <BudgetCharts />
+              {/* Grid layout: Sankey on left, Charts on right */}
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div className="xl:row-span-2">
+                  <IncomeSankey />
+                </div>
+                <div>
+                  <BudgetCharts />
+                </div>
+              </div>
             </div>
           )}
 

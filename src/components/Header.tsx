@@ -70,9 +70,9 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Coffers</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Personal Budget Planning
+            <h1 className="text-4xl cyberpunk-logo">₵ØFFER$</h1>
+            <p className="text-sm text-cyan-600 dark:text-cyan-400 font-medium tracking-wide">
+              FINANCIAL INTELLIGENCE SYSTEM
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function Header() {
             <div className="relative">
               <button
                 onClick={() => setShowPresets(!showPresets)}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-md transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md cyberpunk-button"
               >
                 <BookTemplate size={18} />
                 Presets
@@ -111,7 +111,7 @@ export function Header() {
 
             {/* Export Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-md cyberpunk-button">
                 <Download size={18} />
                 Export
               </button>

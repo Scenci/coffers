@@ -75,8 +75,8 @@ export function IncomeSankey() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 cyberpunk-card">
+      <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100 cyberpunk-glow-text">
         Monthly Income Flow
       </h3>
       <div className="overflow-x-auto">

@@ -26,19 +26,19 @@ export function SummaryDashboard() {
   const budgetHealth = getBudgetHealth();
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 cyberpunk-card">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 cyberpunk-glow-text">
         Budget Summary
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Gross Income */}
-        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
               Gross Income
             </span>
-            <DollarSign className="text-blue-600 dark:text-blue-400" size={20} />
+            <DollarSign className="text-cyan-500 dark:text-cyan-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {formatCurrency(summary.grossIncome)}
@@ -49,12 +49,12 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Taxes */}
-        <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+        <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-pink-600 dark:text-pink-400">
               Total Taxes
             </span>
-            <TrendingDown className="text-red-600 dark:text-red-400" size={20} />
+            <TrendingDown className="text-pink-500 dark:text-pink-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {formatCurrency(summary.taxes.total)}
@@ -67,12 +67,12 @@ export function SummaryDashboard() {
         </div>
 
         {/* Net Income */}
-        <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+        <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
               Net Income
             </span>
-            <TrendingUp className="text-green-600 dark:text-green-400" size={20} />
+            <TrendingUp className="text-emerald-500 dark:text-emerald-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {formatCurrency(summary.netIncome)}
@@ -83,12 +83,12 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Expenses */}
-        <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4">
+        <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-orange-600 dark:text-orange-400">
               Total Expenses
             </span>
-            <TrendingDown className="text-orange-600 dark:text-orange-400" size={20} />
+            <TrendingDown className="text-orange-500 dark:text-orange-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {formatCurrency(summary.totalExpenses)}
@@ -99,12 +99,12 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Savings + Investments */}
-        <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
+        <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
               Savings + Investments
             </span>
-            <TrendingUp className="text-purple-600 dark:text-purple-400" size={20} />
+            <TrendingUp className="text-purple-500 dark:text-purple-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {formatCurrency(summary.totalSavings + summary.totalInvestments)}
@@ -115,7 +115,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Remaining */}
-        <div className={`${summary.remaining >= 0 ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'} rounded-lg p-4`}>
+        <div className={`${summary.remaining >= 0 ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'} rounded-lg p-4 cyberpunk-border`}>
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Remaining / Discretionary
@@ -135,12 +135,12 @@ export function SummaryDashboard() {
         </div>
 
         {/* Savings Rate */}
-        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 md:col-span-2 lg:col-span-1">
+        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 md:col-span-2 lg:col-span-1 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
               Savings Rate
             </span>
-            <Percent className="text-indigo-600 dark:text-indigo-400" size={20} />
+            <Percent className="text-indigo-500 dark:text-indigo-400" size={20} />
           </div>
           <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             {summary.savingsRate.toFixed(1)}%
@@ -151,7 +151,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Budget Health */}
-        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 md:col-span-2 lg:col-span-2">
+        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 md:col-span-2 lg:col-span-2 cyberpunk-border">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Budget Health Indicator

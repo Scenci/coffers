@@ -73,8 +73,8 @@ export function BudgetCharts() {
     <div className="space-y-6">
       {/* Expense Breakdown */}
       {expenseData.length > 0 && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 cyberpunk-card">
+          <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100 cyberpunk-glow-text">
             Monthly Expense Breakdown
           </h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -100,8 +100,8 @@ export function BudgetCharts() {
       )}
 
       {/* Income Allocation */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 cyberpunk-card">
+        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100 cyberpunk-glow-text">
           Monthly Income Allocation
         </h3>
         <ResponsiveContainer width="100%" height={300}>
@@ -126,8 +126,8 @@ export function BudgetCharts() {
       </div>
 
       {/* Monthly Budget Overview */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 cyberpunk-card">
+        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100 cyberpunk-glow-text">
           Monthly Budget Overview
         </h3>
         <ResponsiveContainer width="100%" height={300}>
