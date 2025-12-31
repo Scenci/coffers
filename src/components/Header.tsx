@@ -25,7 +25,7 @@ export function Header() {
 
     const canvas = await html2canvas(element, {
       scale: 2,
-      backgroundColor: state.darkMode ? '#1F2937' : '#FFFFFF',
+      backgroundColor: '#0a0a0f',
     });
 
     const imgData = canvas.toDataURL('image/png');
@@ -66,13 +66,13 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md">
+    <header className="cyber-card shadow-md" style={{ borderRadius: '0', borderLeft: 'none', borderRight: 'none', borderTop: 'none' }}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Coffers</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Personal Budget Planning
+            <h1 className="text-4xl font-bold neon-cyan uppercase tracking-wider">COFFERS</h1>
+            <p className="text-sm neon-magenta">
+              Personal Budget Planning v2.077
             </p>
           </div>
 
@@ -81,25 +81,36 @@ export function Header() {
             <div className="relative">
               <button
                 onClick={() => setShowPresets(!showPresets)}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-md transition-colors"
+                className="cyber-button flex items-center gap-2 px-4 py-2 rounded-md uppercase text-sm font-bold tracking-wider"
               >
                 <BookTemplate size={18} />
                 Presets
               </button>
 
               {showPresets && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-10 border border-gray-200 dark:border-gray-600">
+                <div className="absolute right-0 mt-2 w-64 cyber-card rounded-lg z-10">
                   <div className="p-2">
                     {BUDGET_PRESETS.map((preset, index) => (
                       <button
                         key={index}
                         onClick={() => handlePresetSelect(index)}
-                        className="w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
+                        className="w-full text-left px-3 py-2 rounded-md transition-colors"
+                        style={{
+                          borderBottom: index < BUDGET_PRESETS.length - 1 ? '1px solid rgba(0, 240, 255, 0.2)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'rgba(0, 240, 255, 0.1)';
+                          e.currentTarget.style.borderLeft = '3px solid var(--cyber-cyan)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.borderLeft = 'none';
+                        }}
                       >
-                        <div className="font-medium text-gray-800 dark:text-gray-100">
+                        <div className="font-bold neon-cyan text-sm uppercase tracking-wide">
                           {preset.name}
                         </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                        <div className="text-xs opacity-70" style={{ color: 'var(--cyber-cyan)' }}>
                           {preset.description}
                         </div>
                       </button>
@@ -111,23 +122,35 @@ export function Header() {
 
             {/* Export Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors">
+              <button className="cyber-button flex items-center gap-2 px-4 py-2 rounded-md uppercase text-sm font-bold tracking-wider">
                 <Download size={18} />
                 Export
               </button>
 
-              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-10 border border-gray-200 dark:border-gray-600 hidden group-hover:block">
+              <div className="absolute right-0 mt-2 w-40 cyber-card rounded-lg z-10 hidden group-hover:block">
                 <button
                   onClick={handleExportPDF}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-t-md transition-colors text-gray-800 dark:text-gray-100"
+                  className="w-full text-left px-4 py-2 rounded-t-md transition-colors neon-cyan text-sm font-bold uppercase"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(0, 240, 255, 0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                  }}
                 >
-                  Export as PDF
+                  Export PDF
                 </button>
                 <button
                   onClick={handleExportCSV}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-b-md transition-colors text-gray-800 dark:text-gray-100"
+                  className="w-full text-left px-4 py-2 rounded-b-md transition-colors neon-cyan text-sm font-bold uppercase"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(0, 240, 255, 0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                  }}
                 >
-                  Export as CSV
+                  Export CSV
                 </button>
               </div>
             </div>
@@ -135,13 +158,13 @@ export function Header() {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => dispatch({ type: 'TOGGLE_DARK_MODE' })}
-              className="p-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="p-2 rounded-md transition-colors cyber-button"
               aria-label="Toggle dark mode"
             >
               {state.darkMode ? (
-                <Sun className="text-yellow-500" size={20} />
+                <Sun className="neon-yellow" size={20} />
               ) : (
-                <Moon className="text-gray-700" size={20} />
+                <Moon className="neon-cyan" size={20} />
               )}
             </button>
           </div>

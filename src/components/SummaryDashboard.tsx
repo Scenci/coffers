@@ -17,154 +17,215 @@ export function SummaryDashboard() {
   };
 
   const getBudgetHealth = () => {
-    if (summary.remaining < 0) return { label: 'Overspending', color: 'text-red-600 dark:text-red-400' };
-    if (summary.savingsRate >= 20) return { label: 'Excellent', color: 'text-green-600 dark:text-green-400' };
-    if (summary.savingsRate >= 10) return { label: 'Good', color: 'text-blue-600 dark:text-blue-400' };
-    return { label: 'Needs Improvement', color: 'text-yellow-600 dark:text-yellow-400' };
+    if (summary.remaining < 0) return { label: 'OVERSPENDING', color: 'neon-red' };
+    if (summary.savingsRate >= 20) return { label: 'EXCELLENT', color: 'neon-green' };
+    if (summary.savingsRate >= 10) return { label: 'GOOD', color: 'neon-cyan' };
+    return { label: 'NEEDS IMPROVEMENT', color: 'neon-yellow' };
   };
 
   const budgetHealth = getBudgetHealth();
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+    <div className="cyber-card rounded-lg p-4 relative overflow-hidden">
+      <div className="scanline-effect"></div>
+      <h2 className="text-2xl font-bold mb-4 neon-cyan uppercase tracking-wider">
         Budget Summary
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {/* Gross Income */}
-        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(0, 240, 255, 0.4)',
+            boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-cyan">
               Gross Income
             </span>
-            <DollarSign className="text-blue-600 dark:text-blue-400" size={20} />
+            <DollarSign className="neon-cyan" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-cyan">
             {formatCurrency(summary.grossIncome)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {formatCurrency(summary.grossIncome / 12)} / month
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-cyan)' }}>
+            {formatCurrency(summary.grossIncome / 12)} / mo
           </div>
         </div>
 
         {/* Total Taxes */}
-        <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Total Taxes
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255, 0, 85, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(255, 0, 85, 0.4)',
+            boxShadow: '0 0 15px rgba(255, 0, 85, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-red">
+              Taxes
             </span>
-            <TrendingDown className="text-red-600 dark:text-red-400" size={20} />
+            <TrendingDown className="neon-red" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-red">
             {formatCurrency(summary.taxes.total)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            Federal: {formatCurrency(summary.taxes.federalIncome)} |
-            FICA: {formatCurrency(summary.taxes.fica)} |
-            State: {formatCurrency(summary.taxes.stateIncome)}
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-red)' }}>
+            {formatCurrency(summary.taxes.total / 12)} / mo
           </div>
         </div>
 
         {/* Net Income */}
-        <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(0, 255, 136, 0.4)',
+            boxShadow: '0 0 15px rgba(0, 255, 136, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-green">
               Net Income
             </span>
-            <TrendingUp className="text-green-600 dark:text-green-400" size={20} />
+            <TrendingUp className="neon-green" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-green">
             {formatCurrency(summary.netIncome)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {formatCurrency(summary.netIncome / 12)} / month
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-green)' }}>
+            {formatCurrency(summary.netIncome / 12)} / mo
           </div>
         </div>
 
         {/* Total Expenses */}
-        <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Total Expenses
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 0, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(255, 255, 0, 0.4)',
+            boxShadow: '0 0 15px rgba(255, 255, 0, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-yellow">
+              Expenses
             </span>
-            <TrendingDown className="text-orange-600 dark:text-orange-400" size={20} />
+            <TrendingDown className="neon-yellow" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-yellow">
             {formatCurrency(summary.totalExpenses)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {formatCurrency(summary.totalExpenses / 12)} / month
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-yellow)' }}>
+            {formatCurrency(summary.totalExpenses / 12)} / mo
           </div>
         </div>
 
         {/* Total Savings + Investments */}
-        <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Savings + Investments
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(157, 0, 255, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(157, 0, 255, 0.4)',
+            boxShadow: '0 0 15px rgba(157, 0, 255, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-purple">
+              Savings+Invest
             </span>
-            <TrendingUp className="text-purple-600 dark:text-purple-400" size={20} />
+            <TrendingUp className="neon-purple" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-purple">
             {formatCurrency(summary.totalSavings + summary.totalInvestments)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {formatCurrency((summary.totalSavings + summary.totalInvestments) / 12)} / month
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-purple)' }}>
+            {formatCurrency((summary.totalSavings + summary.totalInvestments) / 12)} / mo
           </div>
         </div>
 
         {/* Remaining */}
-        <div className={`${summary.remaining >= 0 ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'} rounded-lg p-4`}>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Remaining / Discretionary
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: summary.remaining >= 0
+              ? 'linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 0, 85, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: summary.remaining >= 0
+              ? '2px solid rgba(0, 255, 136, 0.4)'
+              : '2px solid rgba(255, 0, 85, 0.4)',
+            boxShadow: summary.remaining >= 0
+              ? '0 0 15px rgba(0, 255, 136, 0.2)'
+              : '0 0 15px rgba(255, 0, 85, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className={`text-xs font-bold uppercase tracking-wide ${summary.remaining >= 0 ? 'neon-green' : 'neon-red'}`}>
+              Remaining
             </span>
             {summary.remaining >= 0 ? (
-              <TrendingUp className="text-green-600 dark:text-green-400" size={20} />
+              <TrendingUp className="neon-green" size={16} />
             ) : (
-              <TrendingDown className="text-red-600 dark:text-red-400" size={20} />
+              <TrendingDown className="neon-red" size={16} />
             )}
           </div>
-          <div className={`text-2xl font-bold ${summary.remaining >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+          <div className={`text-xl font-bold ${summary.remaining >= 0 ? 'neon-green' : 'neon-red'}`}>
             {formatCurrency(summary.remaining)}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            {formatCurrency(summary.remaining / 12)} / month
+          <div className="text-xs opacity-70 mt-1" style={{ color: summary.remaining >= 0 ? 'var(--cyber-green)' : 'var(--cyber-red)' }}>
+            {formatCurrency(summary.remaining / 12)} / mo
           </div>
         </div>
 
         {/* Savings Rate */}
-        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 md:col-span-2 lg:col-span-1">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+        <div
+          className="rounded-lg p-3"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255, 0, 255, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(255, 0, 255, 0.4)',
+            boxShadow: '0 0 15px rgba(255, 0, 255, 0.2)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-magenta">
               Savings Rate
             </span>
-            <Percent className="text-indigo-600 dark:text-indigo-400" size={20} />
+            <Percent className="neon-magenta" size={16} />
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-xl font-bold neon-magenta">
             {summary.savingsRate.toFixed(1)}%
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-magenta)' }}>
             of net income
           </div>
         </div>
 
         {/* Budget Health */}
-        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 md:col-span-2 lg:col-span-2">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Budget Health Indicator
+        <div
+          className="rounded-lg p-3 pulse-glow"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(26, 26, 40, 0.9) 100%)',
+            border: '2px solid rgba(0, 240, 255, 0.5)',
+            boxShadow: '0 0 20px rgba(0, 240, 255, 0.3)'
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-bold uppercase tracking-wide neon-cyan">
+              Health
             </span>
           </div>
-          <div className={`text-3xl font-bold ${budgetHealth.color}`}>
+          <div className={`text-lg font-bold ${budgetHealth.color} uppercase tracking-wide`}>
             {budgetHealth.label}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-            {summary.remaining < 0 && 'You are spending more than you earn. Consider reducing expenses or increasing income.'}
-            {summary.remaining >= 0 && summary.savingsRate >= 20 && 'Great job! You\'re saving a healthy portion of your income.'}
-            {summary.remaining >= 0 && summary.savingsRate >= 10 && summary.savingsRate < 20 && 'You\'re on track, but consider increasing your savings rate to 20% or more.'}
-            {summary.remaining >= 0 && summary.savingsRate < 10 && 'Try to increase your savings rate to at least 10-20% of net income.'}
+          <div className="text-xs opacity-70 mt-1" style={{ color: 'var(--cyber-cyan)' }}>
+            {summary.remaining < 0 && 'Over budget'}
+            {summary.remaining >= 0 && summary.savingsRate >= 20 && 'Strong position'}
+            {summary.remaining >= 0 && summary.savingsRate >= 10 && summary.savingsRate < 20 && 'On track'}
+            {summary.remaining >= 0 && summary.savingsRate < 10 && 'Improve savings'}
           </div>
         </div>
       </div>

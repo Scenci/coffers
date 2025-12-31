@@ -25,41 +25,41 @@ export function IncomeSankey() {
     const monthlyRemaining = Math.max(0, summary.remaining / 12);
 
     const nodes: SankeyNode[] = [
-      { name: 'Gross Income', color: '#3B82F6' },
-      { name: 'Taxes', color: '#EF4444' },
-      { name: 'Net Income', color: '#10B981' },
-      { name: 'Expenses', color: '#F97316' },
-      { name: 'Savings', color: '#8B5CF6' },
-      { name: 'Investments', color: '#6366F1' },
+      { name: 'Gross Income', color: '#00f0ff' },
+      { name: 'Taxes', color: '#ff0055' },
+      { name: 'Net Income', color: '#00ff88' },
+      { name: 'Expenses', color: '#ffff00' },
+      { name: 'Savings', color: '#9d00ff' },
+      { name: 'Investments', color: '#ff00ff' },
     ];
 
     if (monthlyRemaining > 0) {
-      nodes.push({ name: 'Remaining', color: '#06B6D4' });
+      nodes.push({ name: 'Remaining', color: '#00f0ff' });
     }
 
     const links: SankeyLink[] = [
-      { source: 0, target: 1, value: monthlyTaxes, color: '#EF4444' },
-      { source: 0, target: 2, value: monthlyNet, color: '#10B981' },
-      { source: 2, target: 3, value: monthlyExpenses, color: '#F97316' },
-      { source: 2, target: 4, value: monthlySavings, color: '#8B5CF6' },
-      { source: 2, target: 5, value: monthlyInvestments, color: '#6366F1' },
+      { source: 0, target: 1, value: monthlyTaxes, color: '#ff0055' },
+      { source: 0, target: 2, value: monthlyNet, color: '#00ff88' },
+      { source: 2, target: 3, value: monthlyExpenses, color: '#ffff00' },
+      { source: 2, target: 4, value: monthlySavings, color: '#9d00ff' },
+      { source: 2, target: 5, value: monthlyInvestments, color: '#ff00ff' },
     ];
 
     if (monthlyRemaining > 0) {
-      links.push({ source: 2, target: 6, value: monthlyRemaining, color: '#06B6D4' });
+      links.push({ source: 2, target: 6, value: monthlyRemaining, color: '#00f0ff' });
     }
 
     return { nodes, links };
   }, [summary]);
 
   const width = 800;
-  const height = 500;
-  const padding = { top: 20, right: 200, bottom: 20, left: 200 };
+  const height = 350;
+  const padding = { top: 15, right: 180, bottom: 15, left: 180 };
 
   const sankeyGenerator = d3Sankey
     .sankey<{}, {}>()
-    .nodeWidth(20)
-    .nodePadding(20)
+    .nodeWidth(15)
+    .nodePadding(15)
     .extent([
       [padding.left, padding.top],
       [width - padding.right, height - padding.bottom],
@@ -75,12 +75,13 @@ export function IncomeSankey() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+    <div className="cyber-card rounded-lg p-4 relative overflow-hidden">
+      <div className="scanline-effect"></div>
+      <h3 className="text-lg font-bold mb-3 neon-cyan uppercase tracking-wider">
         Monthly Income Flow
       </h3>
       <div className="overflow-x-auto">
-        <svg width={width} height={height} className="mx-auto">
+        <svg width={width} height={height} className="mx-auto" style={{ background: 'transparent' }}>
           {/* Links */}
           {sankeyLinks.map((link, i) => {
             const linkPath = d3Sankey.sankeyLinkHorizontal();
@@ -93,8 +94,11 @@ export function IncomeSankey() {
                   d={path || ''}
                   fill="none"
                   stroke={link.color || '#999'}
-                  strokeOpacity={0.3}
+                  strokeOpacity={0.5}
                   strokeWidth={Math.max(1, (link.width ?? 0))}
+                  style={{
+                    filter: `drop-shadow(0 0 5px ${link.color})`
+                  }}
                 />
                 <title>
                   {source.name} → {target.name}: {formatCurrency(link.value ?? 0)}
@@ -117,16 +121,23 @@ export function IncomeSankey() {
                   width={x1 - x0}
                   height={y1 - y0}
                   fill={node.color || '#666'}
-                  fillOpacity={0.8}
-                  stroke="#333"
-                  strokeWidth={1}
+                  fillOpacity={0.9}
+                  stroke={node.color}
+                  strokeWidth={2}
+                  style={{
+                    filter: `drop-shadow(0 0 8px ${node.color})`
+                  }}
                 />
                 <text
                   x={x0 < width / 2 ? x1 + 6 : x0 - 6}
                   y={(y0 + y1) / 2}
                   dy="0.35em"
                   textAnchor={x0 < width / 2 ? 'start' : 'end'}
-                  className="text-sm font-medium fill-gray-800 dark:fill-gray-100"
+                  className="text-sm font-bold uppercase"
+                  fill={node.color}
+                  style={{
+                    textShadow: `0 0 10px ${node.color}`
+                  }}
                 >
                   {node.name}
                 </text>
@@ -135,7 +146,11 @@ export function IncomeSankey() {
                   y={(y0 + y1) / 2 + 15}
                   dy="0.35em"
                   textAnchor={x0 < width / 2 ? 'start' : 'end'}
-                  className="text-xs fill-gray-600 dark:fill-gray-400"
+                  className="text-xs"
+                  fill="#00f0ff"
+                  style={{
+                    opacity: 0.8
+                  }}
                 >
                   {formatCurrency(node.value || 0)}
                 </text>
@@ -144,8 +159,8 @@ export function IncomeSankey() {
           })}
         </svg>
       </div>
-      <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-        Hover over the flows to see exact amounts. Width of flows represents relative amounts.
+      <p className="text-xs opacity-70 mt-2 text-center" style={{ color: 'var(--cyber-cyan)' }}>
+        Hover over flows for details · Flow width = relative amount
       </p>
     </div>
   );

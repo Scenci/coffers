@@ -15,39 +15,57 @@ function App() {
 
   return (
     <BudgetProvider>
-      <div id="budget-app" className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div id="budget-app" className="min-h-screen" style={{ background: 'var(--cyber-bg-primary)' }}>
         <Header />
 
         {/* Tab Navigation */}
         <div className="container mx-auto px-4 mt-6">
-          <div className="flex gap-2 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex gap-2" style={{ borderBottom: '2px solid rgba(0, 240, 255, 0.3)' }}>
             <button
               onClick={() => setActiveTab('input')}
-              className={`px-6 py-3 font-medium transition-colors ${
+              className={`px-6 py-3 font-bold uppercase tracking-wider text-sm transition-all ${
                 activeTab === 'input'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'neon-cyan'
+                  : ''
               }`}
+              style={{
+                borderBottom: activeTab === 'input' ? '3px solid var(--cyber-cyan)' : 'none',
+                background: activeTab === 'input' ? 'rgba(0, 240, 255, 0.1)' : 'transparent',
+                color: activeTab === 'input' ? 'var(--cyber-cyan)' : 'rgba(0, 240, 255, 0.5)',
+                textShadow: activeTab === 'input' ? '0 0 10px var(--cyber-cyan)' : 'none'
+              }}
             >
               Input Data
             </button>
             <button
               onClick={() => setActiveTab('visualize')}
-              className={`px-6 py-3 font-medium transition-colors ${
+              className={`px-6 py-3 font-bold uppercase tracking-wider text-sm transition-all ${
                 activeTab === 'visualize'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'neon-magenta'
+                  : ''
               }`}
+              style={{
+                borderBottom: activeTab === 'visualize' ? '3px solid var(--cyber-magenta)' : 'none',
+                background: activeTab === 'visualize' ? 'rgba(255, 0, 255, 0.1)' : 'transparent',
+                color: activeTab === 'visualize' ? 'var(--cyber-magenta)' : 'rgba(255, 0, 255, 0.5)',
+                textShadow: activeTab === 'visualize' ? '0 0 10px var(--cyber-magenta)' : 'none'
+              }}
             >
               Visualizations
             </button>
             <button
               onClick={() => setActiveTab('projections')}
-              className={`px-6 py-3 font-medium transition-colors ${
+              className={`px-6 py-3 font-bold uppercase tracking-wider text-sm transition-all ${
                 activeTab === 'projections'
-                  ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                  ? 'neon-green'
+                  : ''
               }`}
+              style={{
+                borderBottom: activeTab === 'projections' ? '3px solid var(--cyber-green)' : 'none',
+                background: activeTab === 'projections' ? 'rgba(0, 255, 136, 0.1)' : 'transparent',
+                color: activeTab === 'projections' ? 'var(--cyber-green)' : 'rgba(0, 255, 136, 0.5)',
+                textShadow: activeTab === 'projections' ? '0 0 10px var(--cyber-green)' : 'none'
+              }}
             >
               Projections
             </button>
@@ -55,15 +73,15 @@ function App() {
         </div>
 
         {/* Main Content */}
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-6">
           {activeTab === 'input' && (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SummaryDashboard />
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <IncomeForm />
                 <LocationForm />
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <SavingsForm />
                 <ExpensesForm />
               </div>
@@ -71,7 +89,7 @@ function App() {
           )}
 
           {activeTab === 'visualize' && (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SummaryDashboard />
               <IncomeSankey />
               <BudgetCharts />
@@ -79,7 +97,7 @@ function App() {
           )}
 
           {activeTab === 'projections' && (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <SummaryDashboard />
               <ProjectionsPanel />
             </div>
@@ -87,10 +105,10 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-white dark:bg-gray-800 mt-12 py-6 border-t border-gray-200 dark:border-gray-700">
-          <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400 text-sm">
-            <p>Coffers - Personal Budget Planning Tool</p>
-            <p className="mt-1">Data is saved locally in your browser</p>
+        <footer className="cyber-card mt-8 py-4" style={{ borderRadius: '0', borderLeft: 'none', borderRight: 'none', borderBottom: 'none' }}>
+          <div className="container mx-auto px-4 text-center text-sm">
+            <p className="neon-cyan uppercase tracking-wider font-bold">COFFERS - Personal Budget Planning Tool</p>
+            <p className="mt-1 opacity-70" style={{ color: 'var(--cyber-cyan)' }}>Data saved locally in your browser</p>
           </div>
         </footer>
       </div>
