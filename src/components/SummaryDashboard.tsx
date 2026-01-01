@@ -17,10 +17,10 @@ export function SummaryDashboard() {
   };
 
   const getBudgetHealth = () => {
-    if (summary.remaining < 0) return { label: 'Overspending', color: 'text-red-600 dark:text-red-400' };
-    if (summary.savingsRate >= 20) return { label: 'Excellent', color: 'text-green-600 dark:text-green-400' };
-    if (summary.savingsRate >= 10) return { label: 'Good', color: 'text-blue-600 dark:text-blue-400' };
-    return { label: 'Needs Improvement', color: 'text-yellow-600 dark:text-yellow-400' };
+    if (summary.remaining < 0) return { label: 'Overspending', color: 'text-mcm-rust dark:text-mcm-coral' };
+    if (summary.savingsRate >= 20) return { label: 'Excellent', color: 'text-mcm-olive dark:text-mcm-sage' };
+    if (summary.savingsRate >= 10) return { label: 'Good', color: 'text-mcm-teal dark:text-mcm-seafoam' };
+    return { label: 'Needs Improvement', color: 'text-mcm-mustard dark:text-mcm-gold' };
   };
 
   const budgetHealth = getBudgetHealth();
@@ -173,19 +173,19 @@ export function SummaryDashboard() {
         </div>
 
         {/* Budget Health */}
-        <div className="bg-white dark:bg-mcm-navy border-4 border-mcm-charcoal dark:border-mcm-mustard p-6 md:col-span-2 lg:col-span-2 relative overflow-hidden card-angled-both">
+        <div className="bg-mcm-warm-cream dark:bg-mcm-navy border-4 border-mcm-charcoal dark:border-mcm-mustard p-6 md:col-span-2 lg:col-span-2 relative overflow-hidden card-angled-both">
           <div className="absolute inset-0 pattern-diagonal opacity-10"></div>
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-6 h-6 bg-mcm-teal clip-path-diamond"></div>
-              <span className="text-xs font-display font-semibold text-mcm-slate dark:text-mcm-cream uppercase tracking-wider">
+              <div className="w-6 h-6 bg-mcm-teal dark:bg-mcm-seafoam clip-path-diamond"></div>
+              <span className="text-xs font-display font-semibold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-wider">
                 Budget Health Indicator
               </span>
             </div>
             <div className={`text-4xl font-display font-bold ${budgetHealth.color} uppercase tracking-tight`}>
               {budgetHealth.label}
             </div>
-            <div className="text-sm text-mcm-slate dark:text-mcm-cream/80 mt-3 leading-relaxed">
+            <div className="text-sm text-mcm-charcoal dark:text-mcm-cream mt-3 leading-relaxed">
               {summary.remaining < 0 && 'You are spending more than you earn. Consider reducing expenses or increasing income.'}
               {summary.remaining >= 0 && summary.savingsRate >= 20 && 'Great job! You\'re saving a healthy portion of your income.'}
               {summary.remaining >= 0 && summary.savingsRate >= 10 && summary.savingsRate < 20 && 'You\'re on track, but consider increasing your savings rate to 20% or more.'}

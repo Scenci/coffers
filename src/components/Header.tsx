@@ -102,7 +102,7 @@ export function Header() {
                       <button
                         key={index}
                         onClick={() => handlePresetSelect(index)}
-                        className="w-full text-left px-3 py-3 hover:bg-mcm-teal hover:text-white dark:hover:bg-mcm-seafoam dark:hover:text-mcm-charcoal transition-colors border-b border-mcm-cream/20 last:border-b-0"
+                        className="w-full text-left px-3 py-3 hover:bg-mcm-teal hover:text-white dark:hover:bg-mcm-seafoam dark:hover:text-mcm-charcoal transition-colors border-b border-mcm-charcoal/10 dark:border-mcm-cream/20 last:border-b-0"
                       >
                         <div className="font-display font-semibold text-mcm-charcoal dark:text-mcm-cream">
                           {preset.name}
@@ -127,7 +127,7 @@ export function Header() {
               <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-mcm-slate border-2 border-mcm-charcoal dark:border-mcm-cream shadow-retro z-20 hidden group-hover:block">
                 <button
                   onClick={handleExportPDF}
-                  className="w-full text-left px-4 py-3 hover:bg-mcm-olive hover:text-white dark:hover:bg-mcm-sage dark:hover:text-mcm-charcoal transition-colors font-medium text-mcm-charcoal dark:text-mcm-cream border-b border-mcm-cream/20"
+                  className="w-full text-left px-4 py-3 hover:bg-mcm-olive hover:text-white dark:hover:bg-mcm-sage dark:hover:text-mcm-charcoal transition-colors font-medium text-mcm-charcoal dark:text-mcm-cream border-b border-mcm-charcoal/10 dark:border-mcm-cream/20"
                 >
                   Export as PDF
                 </button>

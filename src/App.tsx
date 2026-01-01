@@ -26,7 +26,7 @@ function App() {
               className={`tab-retro px-8 py-4 font-display font-semibold uppercase tracking-wide text-sm transition-all ${
                 activeTab === 'input'
                   ? 'active bg-mcm-teal text-white dark:bg-mcm-seafoam dark:text-mcm-charcoal'
-                  : 'bg-white dark:bg-mcm-slate text-mcm-slate dark:text-mcm-cream hover:bg-mcm-teal/10 dark:hover:bg-mcm-seafoam/20'
+                  : 'bg-white dark:bg-mcm-slate text-mcm-charcoal dark:text-mcm-cream hover:bg-mcm-teal/10 dark:hover:bg-mcm-seafoam/20'
               }`}
             >
               Input Data
@@ -36,7 +36,7 @@ function App() {
               className={`tab-retro px-8 py-4 font-display font-semibold uppercase tracking-wide text-sm transition-all ${
                 activeTab === 'visualize'
                   ? 'active bg-mcm-mustard text-white dark:bg-mcm-mustard dark:text-mcm-charcoal'
-                  : 'bg-white dark:bg-mcm-slate text-mcm-slate dark:text-mcm-cream hover:bg-mcm-mustard/10 dark:hover:bg-mcm-mustard/20'
+                  : 'bg-white dark:bg-mcm-slate text-mcm-charcoal dark:text-mcm-cream hover:bg-mcm-mustard/10 dark:hover:bg-mcm-mustard/20'
               }`}
             >
               Visualizations
@@ -46,7 +46,7 @@ function App() {
               className={`tab-retro px-8 py-4 font-display font-semibold uppercase tracking-wide text-sm transition-all ${
                 activeTab === 'projections'
                   ? 'active bg-mcm-olive text-white dark:bg-mcm-sage dark:text-mcm-charcoal'
-                  : 'bg-white dark:bg-mcm-slate text-mcm-slate dark:text-mcm-cream hover:bg-mcm-olive/10 dark:hover:bg-mcm-sage/20'
+                  : 'bg-white dark:bg-mcm-slate text-mcm-charcoal dark:text-mcm-cream hover:bg-mcm-olive/10 dark:hover:bg-mcm-sage/20'
               }`}
             >
               Projections

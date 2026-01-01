@@ -75,10 +75,13 @@ export function IncomeSankey() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-        Monthly Income Flow
-      </h3>
+    <div className="form-card">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-6 h-6 bg-mcm-teal clip-path-diamond"></div>
+        <h3 className="text-xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+          Monthly Income Flow
+        </h3>
+      </div>
       <div className="overflow-x-auto">
         <svg width={width} height={height} className="mx-auto">
           {/* Links */}

@@ -73,10 +73,13 @@ export function BudgetCharts() {
     <div className="space-y-6">
       {/* Expense Breakdown */}
       {expenseData.length > 0 && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-            Monthly Expense Breakdown
-          </h3>
+        <div className="form-card">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-6 h-6 bg-mcm-coral clip-path-diamond"></div>
+            <h3 className="text-xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+              Monthly Expense Breakdown
+            </h3>
+          </div>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -100,10 +103,13 @@ export function BudgetCharts() {
       )}
 
       {/* Income Allocation */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-          Monthly Income Allocation
-        </h3>
+      <div className="form-card">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-6 h-6 bg-mcm-teal clip-path-hexagon"></div>
+          <h3 className="text-xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+            Monthly Income Allocation
+          </h3>
+        </div>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -126,10 +132,13 @@ export function BudgetCharts() {
       </div>
 
       {/* Monthly Budget Overview */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-          Monthly Budget Overview
-        </h3>
+      <div className="form-card">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-6 h-6 bg-mcm-mustard clip-path-diamond"></div>
+          <h3 className="text-xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+            Monthly Budget Overview
+          </h3>
+        </div>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={monthlyBudgetData}>
             <CartesianGrid strokeDasharray="3 3" className="dark:opacity-20" />
