@@ -147,7 +147,7 @@ export function ProjectionsPanel() {
 
       {/* Projection Results */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className="bg-gradient-to-br from-mcm-coral to-mcm-burnt-orange border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
+        <div className="bg-mcm-coral bg-gradient-to-br from-mcm-coral to-mcm-burnt-orange border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
           <div className="text-xs font-display font-semibold text-white uppercase tracking-wider mb-2">
             Projected Savings
           </div>
@@ -159,7 +159,7 @@ export function ProjectionsPanel() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-mcm-teal to-mcm-deep-teal border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
+        <div className="bg-mcm-teal bg-gradient-to-br from-mcm-teal to-mcm-deep-teal border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
           <div className="text-xs font-display font-semibold text-white uppercase tracking-wider mb-2">
             Projected Investments
           </div>
@@ -171,7 +171,7 @@ export function ProjectionsPanel() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-mcm-sage to-mcm-olive border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
+        <div className="bg-mcm-sage bg-gradient-to-br from-mcm-sage to-mcm-olive border-2 border-mcm-charcoal dark:border-mcm-cream p-5">
           <div className="text-xs font-display font-semibold text-white uppercase tracking-wider mb-2">
             Total Wealth
           </div>

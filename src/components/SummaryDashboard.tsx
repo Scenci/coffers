@@ -36,7 +36,7 @@ export function SummaryDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Gross Income */}
-        <div className="bg-gradient-to-br from-mcm-teal to-mcm-deep-teal dark:from-mcm-teal/80 dark:to-mcm-deep-teal/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
+        <div className="bg-mcm-teal bg-gradient-to-br from-mcm-teal to-mcm-deep-teal dark:from-mcm-teal/80 dark:to-mcm-deep-teal/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-16 h-16 bg-mcm-mustard/20 clip-path-diamond transform rotate-45"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -55,7 +55,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Taxes */}
-        <div className="bg-gradient-to-br from-mcm-rust to-mcm-burnt-orange dark:from-mcm-rust/80 dark:to-mcm-burnt-orange/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
+        <div className="bg-mcm-rust bg-gradient-to-br from-mcm-rust to-mcm-burnt-orange dark:from-mcm-rust/80 dark:to-mcm-burnt-orange/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
           <div className="absolute bottom-0 left-0 w-20 h-20 pattern-chevron opacity-30"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -74,7 +74,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Net Income */}
-        <div className="bg-gradient-to-br from-mcm-sage to-mcm-olive dark:from-mcm-sage/80 dark:to-mcm-olive/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
+        <div className="bg-mcm-sage bg-gradient-to-br from-mcm-sage to-mcm-olive dark:from-mcm-sage/80 dark:to-mcm-olive/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-16 h-16 bg-white/10 rounded-full transform -translate-x-8 -translate-y-8"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -93,7 +93,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Expenses */}
-        <div className="bg-gradient-to-br from-mcm-coral to-mcm-burnt-orange dark:from-mcm-coral/80 dark:to-mcm-burnt-orange/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
+        <div className="bg-mcm-coral bg-gradient-to-br from-mcm-coral to-mcm-burnt-orange dark:from-mcm-coral/80 dark:to-mcm-burnt-orange/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
           <div className="absolute inset-0 pattern-dots opacity-20"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -112,7 +112,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Total Savings + Investments */}
-        <div className="bg-gradient-to-br from-mcm-seafoam to-mcm-teal dark:from-mcm-seafoam/80 dark:to-mcm-teal/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
+        <div className="bg-mcm-seafoam bg-gradient-to-br from-mcm-seafoam to-mcm-teal dark:from-mcm-seafoam/80 dark:to-mcm-teal/80 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden">
           <div className="absolute bottom-0 right-0 w-24 h-24 sunburst opacity-30"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -131,7 +131,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Remaining */}
-        <div className={`${summary.remaining >= 0 ? 'bg-gradient-to-br from-mcm-sage to-mcm-olive' : 'bg-gradient-to-br from-mcm-rust to-mcm-coral'} border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden`}>
+        <div className={`${summary.remaining >= 0 ? 'bg-mcm-sage bg-gradient-to-br from-mcm-sage to-mcm-olive' : 'bg-mcm-rust bg-gradient-to-br from-mcm-rust to-mcm-coral'} border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden`}>
           <div className="absolute inset-0 pattern-grid opacity-20"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
@@ -154,7 +154,7 @@ export function SummaryDashboard() {
         </div>
 
         {/* Savings Rate */}
-        <div className="bg-gradient-to-br from-mcm-mustard to-mcm-gold dark:from-mcm-mustard/90 dark:to-mcm-gold/90 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden md:col-span-2 lg:col-span-1">
+        <div className="bg-mcm-mustard bg-gradient-to-br from-mcm-mustard to-mcm-gold dark:from-mcm-mustard/90 dark:to-mcm-gold/90 border-2 border-mcm-charcoal dark:border-mcm-cream p-5 relative overflow-hidden md:col-span-2 lg:col-span-1">
           <div className="absolute top-0 right-0 w-32 h-32 sunburst opacity-20"></div>
           <div className="flex items-center justify-between mb-3 relative z-10">
             <span className="text-xs font-display font-semibold text-white uppercase tracking-wider">
