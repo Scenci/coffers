@@ -20,7 +20,7 @@ export function SummaryDashboard() {
     if (summary.remaining < 0) return { label: 'Overspending', color: 'text-mcm-rust dark:text-mcm-coral' };
     if (summary.savingsRate >= 20) return { label: 'Excellent', color: 'text-mcm-olive dark:text-mcm-sage' };
     if (summary.savingsRate >= 10) return { label: 'Good', color: 'text-mcm-teal dark:text-mcm-seafoam' };
-    return { label: 'Needs Improvement', color: 'text-mcm-mustard dark:text-mcm-gold' };
+    return { label: 'Needs Improvement', color: 'text-mcm-burnt-orange dark:text-mcm-mustard' };
   };
 
   const budgetHealth = getBudgetHealth();

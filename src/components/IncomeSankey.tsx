@@ -25,28 +25,28 @@ export function IncomeSankey() {
     const monthlyRemaining = Math.max(0, summary.remaining / 12);
 
     const nodes: SankeyNode[] = [
-      { name: 'Gross Income', color: '#3B82F6' },
-      { name: 'Taxes', color: '#EF4444' },
-      { name: 'Net Income', color: '#10B981' },
-      { name: 'Expenses', color: '#F97316' },
-      { name: 'Savings', color: '#8B5CF6' },
-      { name: 'Investments', color: '#6366F1' },
+      { name: 'Gross Income', color: '#2A7F7F' }, // teal
+      { name: 'Taxes', color: '#B7410E' }, // rust
+      { name: 'Net Income', color: '#9CAF88' }, // sage
+      { name: 'Expenses', color: '#FF6B6B' }, // coral
+      { name: 'Savings', color: '#7A8450' }, // olive
+      { name: 'Investments', color: '#2A7F7F' }, // teal
     ];
 
     if (monthlyRemaining > 0) {
-      nodes.push({ name: 'Remaining', color: '#06B6D4' });
+      nodes.push({ name: 'Remaining', color: '#95CFC5' }); // seafoam
     }
 
     const links: SankeyLink[] = [
-      { source: 0, target: 1, value: monthlyTaxes, color: '#EF4444' },
-      { source: 0, target: 2, value: monthlyNet, color: '#10B981' },
-      { source: 2, target: 3, value: monthlyExpenses, color: '#F97316' },
-      { source: 2, target: 4, value: monthlySavings, color: '#8B5CF6' },
-      { source: 2, target: 5, value: monthlyInvestments, color: '#6366F1' },
+      { source: 0, target: 1, value: monthlyTaxes, color: '#B7410E' },
+      { source: 0, target: 2, value: monthlyNet, color: '#9CAF88' },
+      { source: 2, target: 3, value: monthlyExpenses, color: '#FF6B6B' },
+      { source: 2, target: 4, value: monthlySavings, color: '#7A8450' },
+      { source: 2, target: 5, value: monthlyInvestments, color: '#2A7F7F' },
     ];
 
     if (monthlyRemaining > 0) {
-      links.push({ source: 2, target: 6, value: monthlyRemaining, color: '#06B6D4' });
+      links.push({ source: 2, target: 6, value: monthlyRemaining, color: '#95CFC5' });
     }
 
     return { nodes, links };
@@ -75,81 +75,84 @@ export function IncomeSankey() {
   };
 
   return (
-    <div className="form-card">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-6 h-6 bg-mcm-teal clip-path-diamond"></div>
-        <h3 className="text-xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
-          Monthly Income Flow
-        </h3>
-      </div>
-      <div className="overflow-x-auto">
-        <svg width={width} height={height} className="mx-auto">
-          {/* Links */}
-          {sankeyLinks.map((link, i) => {
-            const linkPath = d3Sankey.sankeyLinkHorizontal();
-            const path = linkPath(link as any);
-            const source = link.source as SankeyNode;
-            const target = link.target as SankeyNode;
-            return (
-              <g key={`link-${i}`}>
-                <path
-                  d={path || ''}
-                  fill="none"
-                  stroke={link.color || '#999'}
-                  strokeOpacity={0.3}
-                  strokeWidth={Math.max(1, (link.width ?? 0))}
-                />
-                <title>
-                  {source.name} → {target.name}: {formatCurrency(link.value ?? 0)}
-                </title>
-              </g>
-            );
-          })}
+    <div className="form-card pattern-grid">
+      <div className="bg-mcm-warm-cream dark:bg-mcm-navy border-2 border-mcm-charcoal dark:border-mcm-cream p-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-20 h-20 bg-mcm-mustard/10 clip-path-hexagon"></div>
+        <div className="flex items-center gap-3 mb-6 relative z-10">
+          <div className="w-8 h-8 bg-mcm-teal dark:bg-mcm-seafoam clip-path-diamond"></div>
+          <h3 className="text-2xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+            Monthly Income Flow
+          </h3>
+        </div>
+        <div className="overflow-x-auto bg-white dark:bg-mcm-slate p-4 border-2 border-mcm-charcoal/20 dark:border-mcm-cream/20 relative z-10">
+          <svg width={width} height={height} className="mx-auto">
+            {/* Links */}
+            {sankeyLinks.map((link, i) => {
+              const linkPath = d3Sankey.sankeyLinkHorizontal();
+              const path = linkPath(link as any);
+              const source = link.source as SankeyNode;
+              const target = link.target as SankeyNode;
+              return (
+                <g key={`link-${i}`}>
+                  <path
+                    d={path || ''}
+                    fill="none"
+                    stroke={link.color || '#999'}
+                    strokeOpacity={0.4}
+                    strokeWidth={Math.max(1, (link.width ?? 0))}
+                  />
+                  <title>
+                    {source.name} → {target.name}: {formatCurrency(link.value ?? 0)}
+                  </title>
+                </g>
+              );
+            })}
 
-          {/* Nodes */}
-          {sankeyNodes.map((node, i) => {
-            const x0 = node.x0 ?? 0;
-            const x1 = node.x1 ?? 0;
-            const y0 = node.y0 ?? 0;
-            const y1 = node.y1 ?? 0;
-            return (
-              <g key={`node-${i}`}>
-                <rect
-                  x={x0}
-                  y={y0}
-                  width={x1 - x0}
-                  height={y1 - y0}
-                  fill={node.color || '#666'}
-                  fillOpacity={0.8}
-                  stroke="#333"
-                  strokeWidth={1}
-                />
-                <text
-                  x={x0 < width / 2 ? x1 + 6 : x0 - 6}
-                  y={(y0 + y1) / 2}
-                  dy="0.35em"
-                  textAnchor={x0 < width / 2 ? 'start' : 'end'}
-                  className="text-sm font-medium fill-gray-800 dark:fill-gray-100"
-                >
-                  {node.name}
-                </text>
-                <text
-                  x={x0 < width / 2 ? x1 + 6 : x0 - 6}
-                  y={(y0 + y1) / 2 + 15}
-                  dy="0.35em"
-                  textAnchor={x0 < width / 2 ? 'start' : 'end'}
-                  className="text-xs fill-gray-600 dark:fill-gray-400"
-                >
-                  {formatCurrency(node.value || 0)}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
+            {/* Nodes */}
+            {sankeyNodes.map((node, i) => {
+              const x0 = node.x0 ?? 0;
+              const x1 = node.x1 ?? 0;
+              const y0 = node.y0 ?? 0;
+              const y1 = node.y1 ?? 0;
+              return (
+                <g key={`node-${i}`}>
+                  <rect
+                    x={x0}
+                    y={y0}
+                    width={x1 - x0}
+                    height={y1 - y0}
+                    fill={node.color || '#666'}
+                    fillOpacity={0.85}
+                    stroke="#2D2D2A"
+                    strokeWidth={2}
+                  />
+                  <text
+                    x={x0 < width / 2 ? x1 + 6 : x0 - 6}
+                    y={(y0 + y1) / 2}
+                    dy="0.35em"
+                    textAnchor={x0 < width / 2 ? 'start' : 'end'}
+                    className="text-sm font-display font-semibold fill-mcm-charcoal dark:fill-mcm-cream"
+                  >
+                    {node.name}
+                  </text>
+                  <text
+                    x={x0 < width / 2 ? x1 + 6 : x0 - 6}
+                    y={(y0 + y1) / 2 + 16}
+                    dy="0.35em"
+                    textAnchor={x0 < width / 2 ? 'start' : 'end'}
+                    className="text-xs font-medium fill-mcm-slate dark:fill-mcm-cream/80"
+                  >
+                    {formatCurrency(node.value || 0)}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+        <p className="text-xs font-medium text-mcm-slate dark:text-mcm-cream/70 mt-4 text-center uppercase tracking-wide relative z-10">
+          Hover over the flows to see exact amounts • Width represents relative amounts
+        </p>
       </div>
-      <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-        Hover over the flows to see exact amounts. Width of flows represents relative amounts.
-      </p>
     </div>
   );
 }
