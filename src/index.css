@@ -1,1 +1,289 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Mid Century Modern / Art Deco Design System */
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Geometric Background Patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, rgba(42, 127, 127, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(rgba(42, 127, 127, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 127, 127, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.pattern-chevron {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(227, 168, 87, 0.05) 10px,
+    rgba(227, 168, 87, 0.05) 20px
+  );
+}
+
+.pattern-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 15px,
+    rgba(42, 127, 127, 0.03) 15px,
+    rgba(42, 127, 127, 0.03) 30px
+  );
+}
+
+/* Angled Corner Cards */
+.card-angled {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  position: relative;
+}
+
+.card-angled-both {
+  clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+  position: relative;
+}
+
+/* Geometric Dividers */
+.divider-geometric {
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #2A7F7F 25%,
+    #E3A857 50%,
+    #2A7F7F 75%,
+    transparent 100%
+  );
+  position: relative;
+}
+
+.divider-geometric::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #E3A857;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* Retro Buttons */
+.btn-retro {
+  position: relative;
+  transition: all 0.15s ease;
+  border: 2px solid currentColor;
+}
+
+.btn-retro:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px currentColor;
+}
+
+.btn-retro:active {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0px currentColor;
+}
+
+/* Sunburst Accent */
+.sunburst {
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      rgba(227, 168, 87, 0.1) 0deg 10deg,
+      transparent 10deg 20deg
+    );
+}
+
+/* Retro Tab Design */
+.tab-retro {
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tab-retro.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2A7F7F, #E3A857, #2A7F7F);
+}
+
+/* Dark Mode Overrides */
+.dark .pattern-dots {
+  background-image: radial-gradient(circle, rgba(149, 207, 197, 0.1) 1px, transparent 1px);
+}
+
+.dark .pattern-grid {
+  background-image:
+    linear-gradient(rgba(149, 207, 197, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(149, 207, 197, 0.08) 1px, transparent 1px);
+}
+
+.dark .pattern-chevron {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(227, 168, 87, 0.03) 10px,
+    rgba(227, 168, 87, 0.03) 20px
+  );
+}
+
+/* Stats Card with Geometric Accent */
+.stat-card {
+  position: relative;
+  overflow: visible;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, transparent 0%, rgba(42, 127, 127, 0.1) 100%);
+  z-index: -1;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A7F7F;
+  border-radius: 2px;
+  border: 2px solid #F5F1E8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1A4D4D;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2D2D2A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #95CFC5;
+  border-color: #2D2D2A;
+}
+
+/* Animated gradient backgrounds */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-animated {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Geometric Shapes */
+.clip-path-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.clip-path-hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.clip-path-arrow {
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+/* Form Elements */
+.input-retro {
+  padding: 0.75rem 1rem;
+  border: 2px solid #2D2D2A;
+  background-color: white;
+  color: #2D2D2A;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.input-retro:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #2A7F7F;
+}
+
+.dark .input-retro {
+  border-color: #F5F1E8;
+  background-color: #2D2D2A;
+  color: #F5F1E8;
+}
+
+.label-retro {
+  display: block;
+  font-size: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  color: #2D2D2A;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dark .label-retro {
+  color: #F5F1E8;
+}
+
+.select-retro {
+  padding: 0.75rem 1rem;
+  border: 2px solid #2D2D2A;
+  background-color: white;
+  color: #2D2D2A;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.select-retro:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #2A7F7F;
+}
+
+.dark .select-retro {
+  border-color: #F5F1E8;
+  background-color: #2D2D2A;
+  color: #F5F1E8;
+}
+
+.form-card {
+  background-color: white;
+  border: 3px solid #2D2D2A;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .form-card {
+  background-color: #4A4A47;
+  border-color: #F5F1E8;
+}

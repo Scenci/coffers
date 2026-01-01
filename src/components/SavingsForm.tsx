@@ -44,15 +44,19 @@ export function SavingsForm() {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-        Savings & Investments
-      </h2>
+    <div className="form-card">
+      <div className="absolute top-0 right-0 w-32 h-32 sunburst opacity-10"></div>
+      <div className="flex items-center gap-3 mb-6 relative z-10">
+        <div className="w-6 h-6 bg-mcm-sage clip-path-diamond"></div>
+        <h2 className="text-2xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+          Savings & Investments
+        </h2>
+      </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 relative z-10">
         {/* Savings Rate */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             Savings Target
           </label>
           <div className="flex gap-2">
@@ -65,7 +69,7 @@ export function SavingsForm() {
                   payload: { savingsRate: parseFloat(e.target.value) || 0 },
                 })
               }
-              className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="input-retro flex-1"
               step="0.1"
             />
             <select
@@ -76,7 +80,7 @@ export function SavingsForm() {
                   payload: { savingsRateType: e.target.value as 'percentage' | 'fixed' },
                 })
               }
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="select-retro"
             >
               <option value="percentage">% of Net Income</option>
               <option value="fixed">$ Fixed Amount</option>
@@ -86,7 +90,7 @@ export function SavingsForm() {
 
         {/* Emergency Fund Target */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             Emergency Fund Target ($) - Optional
           </label>
           <input
@@ -99,14 +103,14 @@ export function SavingsForm() {
               })
             }
             placeholder="e.g., 10000"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+            className="input-retro w-full"
             step="1000"
           />
         </div>
 
         {/* Investment Rate */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             Investment Target
           </label>
           <div className="flex gap-2">
@@ -119,7 +123,7 @@ export function SavingsForm() {
                   payload: { investmentRate: parseFloat(e.target.value) || 0 },
                 })
               }
-              className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="input-retro flex-1"
               step="0.1"
             />
             <select
@@ -130,7 +134,7 @@ export function SavingsForm() {
                   payload: { investmentRateType: e.target.value as 'percentage' | 'fixed' },
                 })
               }
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="select-retro"
             >
               <option value="percentage">% of Net Income</option>
               <option value="fixed">$ Fixed Amount</option>
@@ -141,7 +145,7 @@ export function SavingsForm() {
         {/* 401k Match */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="label-retro">
               Employer 401k Match (%) - Optional
             </label>
             <input
@@ -154,12 +158,12 @@ export function SavingsForm() {
                 })
               }
               placeholder="e.g., 5"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="input-retro w-full"
               step="0.5"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="label-retro">
               Match Up To (%) - Optional
             </label>
             <input
@@ -172,21 +176,21 @@ export function SavingsForm() {
                 })
               }
               placeholder="e.g., 6"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+              className="input-retro w-full"
               step="0.5"
             />
           </div>
         </div>
 
         {/* Current Investments */}
-        <div className="mt-6">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+        <div className="mt-6 pt-4 border-t-2 border-mcm-charcoal/20 dark:border-mcm-cream/20">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
               Current Investments
             </h3>
             <button
               onClick={handleAddInvestment}
-              className="flex items-center gap-1 px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm"
+              className="btn-retro flex items-center gap-2 px-4 py-2 bg-mcm-sage text-white font-display font-semibold uppercase text-xs tracking-wide"
             >
               <Plus size={16} />
               Add Investment
@@ -194,7 +198,7 @@ export function SavingsForm() {
           </div>
 
           {savings.investments.length === 0 ? (
-            <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+            <p className="text-sm text-mcm-slate dark:text-mcm-cream/70 italic">
               No investments added yet. Click "Add Investment" to get started.
             </p>
           ) : (
@@ -210,7 +214,7 @@ export function SavingsForm() {
                       type: e.target.value as Investment['type'],
                     })
                   }
-                  className="col-span-3 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white text-sm"
+                  className="select-retro col-span-3 text-sm"
                 >
                   <option value="401k">401k</option>
                   <option value="IRA">IRA</option>
@@ -228,7 +232,7 @@ export function SavingsForm() {
                       currentBalance: parseFloat(e.target.value) || 0,
                     })
                   }
-                  className="col-span-4 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white text-sm"
+                  className="input-retro col-span-4 text-sm"
                 />
                 <input
                   type="number"
@@ -239,11 +243,11 @@ export function SavingsForm() {
                       monthlyContribution: parseFloat(e.target.value) || 0,
                     })
                   }
-                  className="col-span-4 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white text-sm"
+                  className="input-retro col-span-4 text-sm"
                 />
                 <button
                   onClick={() => handleRemoveInvestment(investment.id)}
-                  className="col-span-1 flex items-center justify-center text-red-500 hover:text-red-700"
+                  className="col-span-1 flex items-center justify-center text-mcm-rust hover:text-mcm-coral transition-colors"
                 >
                   <Trash2 size={16} />
                 </button>

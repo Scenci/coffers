@@ -6,14 +6,18 @@ export function LocationForm() {
   const { location } = state;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-        Location & Tax Context
-      </h2>
+    <div className="form-card">
+      <div className="absolute top-0 right-0 w-32 h-32 pattern-chevron opacity-10"></div>
+      <div className="flex items-center gap-3 mb-6 relative z-10">
+        <div className="w-6 h-6 bg-mcm-mustard clip-path-hexagon"></div>
+        <h2 className="text-2xl font-display font-bold text-mcm-charcoal dark:text-mcm-cream uppercase tracking-tight">
+          Location & Tax Context
+        </h2>
+      </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 relative z-10">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             Country
           </label>
           <input
@@ -25,16 +29,16 @@ export function LocationForm() {
                 payload: { country: e.target.value },
               })
             }
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+            className="input-retro w-full opacity-60 cursor-not-allowed"
             disabled
           />
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-xs text-mcm-slate dark:text-mcm-cream/70 mt-2">
             Currently only United States is supported
           </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             State
           </label>
           <select
@@ -45,7 +49,7 @@ export function LocationForm() {
                 payload: { state: e.target.value },
               })
             }
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+            className="select-retro w-full"
           >
             {US_STATES.map((state) => (
               <option key={state.code} value={state.code}>
@@ -53,13 +57,13 @@ export function LocationForm() {
               </option>
             ))}
           </select>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-xs text-mcm-slate dark:text-mcm-cream/70 mt-2">
             State income tax will be calculated based on your selection
           </p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="label-retro">
             City (Optional)
           </label>
           <input
@@ -72,9 +76,9 @@ export function LocationForm() {
               })
             }
             placeholder="Enter your city"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+            className="input-retro w-full"
           />
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-xs text-mcm-slate dark:text-mcm-cream/70 mt-2">
             Local taxes are not currently calculated
           </p>
         </div>

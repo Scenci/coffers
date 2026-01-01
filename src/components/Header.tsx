@@ -66,14 +66,22 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md">
-      <div className="container mx-auto px-4 py-4">
+    <header className="bg-gradient-to-r from-mcm-navy via-mcm-deep-teal to-mcm-navy dark:from-mcm-charcoal dark:via-mcm-slate dark:to-mcm-charcoal border-b-4 border-mcm-gold relative overflow-hidden">
+      <div className="absolute inset-0 pattern-grid opacity-10"></div>
+      <div className="container mx-auto px-4 py-6 relative z-10">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Coffers</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Personal Budget Planning
-            </p>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-mcm-mustard clip-path-diamond flex items-center justify-center">
+              <span className="text-mcm-navy font-display font-bold text-xl">$</span>
+            </div>
+            <div>
+              <h1 className="text-4xl font-display font-bold text-mcm-cream uppercase tracking-tight">
+                Coffers
+              </h1>
+              <p className="text-sm text-mcm-seafoam font-medium tracking-wide">
+                PERSONAL BUDGET PLANNING
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
@@ -81,25 +89,25 @@ export function Header() {
             <div className="relative">
               <button
                 onClick={() => setShowPresets(!showPresets)}
-                className="flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-md transition-colors"
+                className="btn-retro flex items-center gap-2 px-5 py-2 bg-mcm-coral text-white font-display font-semibold uppercase text-xs tracking-wide"
               >
-                <BookTemplate size={18} />
+                <BookTemplate size={16} />
                 Presets
               </button>
 
               {showPresets && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-10 border border-gray-200 dark:border-gray-600">
+                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-mcm-slate border-2 border-mcm-charcoal dark:border-mcm-cream shadow-retro z-20">
                   <div className="p-2">
                     {BUDGET_PRESETS.map((preset, index) => (
                       <button
                         key={index}
                         onClick={() => handlePresetSelect(index)}
-                        className="w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
+                        className="w-full text-left px-3 py-3 hover:bg-mcm-teal hover:text-white dark:hover:bg-mcm-seafoam dark:hover:text-mcm-charcoal transition-colors border-b border-mcm-cream/20 last:border-b-0"
                       >
-                        <div className="font-medium text-gray-800 dark:text-gray-100">
+                        <div className="font-display font-semibold text-mcm-charcoal dark:text-mcm-cream">
                           {preset.name}
                         </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                        <div className="text-xs text-mcm-slate dark:text-mcm-cream/70 mt-1">
                           {preset.description}
                         </div>
                       </button>
@@ -111,21 +119,21 @@ export function Header() {
 
             {/* Export Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition-colors">
-                <Download size={18} />
+              <button className="btn-retro flex items-center gap-2 px-5 py-2 bg-mcm-olive text-white font-display font-semibold uppercase text-xs tracking-wide">
+                <Download size={16} />
                 Export
               </button>
 
-              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-700 rounded-lg shadow-lg z-10 border border-gray-200 dark:border-gray-600 hidden group-hover:block">
+              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-mcm-slate border-2 border-mcm-charcoal dark:border-mcm-cream shadow-retro z-20 hidden group-hover:block">
                 <button
                   onClick={handleExportPDF}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-t-md transition-colors text-gray-800 dark:text-gray-100"
+                  className="w-full text-left px-4 py-3 hover:bg-mcm-olive hover:text-white dark:hover:bg-mcm-sage dark:hover:text-mcm-charcoal transition-colors font-medium text-mcm-charcoal dark:text-mcm-cream border-b border-mcm-cream/20"
                 >
                   Export as PDF
                 </button>
                 <button
                   onClick={handleExportCSV}
-                  className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-b-md transition-colors text-gray-800 dark:text-gray-100"
+                  className="w-full text-left px-4 py-3 hover:bg-mcm-olive hover:text-white dark:hover:bg-mcm-sage dark:hover:text-mcm-charcoal transition-colors font-medium text-mcm-charcoal dark:text-mcm-cream"
                 >
                   Export as CSV
                 </button>
@@ -135,13 +143,13 @@ export function Header() {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => dispatch({ type: 'TOGGLE_DARK_MODE' })}
-              className="p-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="btn-retro p-3 bg-mcm-mustard hover:bg-mcm-gold transition-colors"
               aria-label="Toggle dark mode"
             >
               {state.darkMode ? (
-                <Sun className="text-yellow-500" size={20} />
+                <Sun className="text-mcm-charcoal" size={20} />
               ) : (
-                <Moon className="text-gray-700" size={20} />
+                <Moon className="text-mcm-navy" size={20} />
               )}
             </button>
           </div>
